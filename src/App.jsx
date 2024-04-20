@@ -1,5 +1,7 @@
 import logo from "./assets/logo.png";
 import "./App.css";
+import ReactModal from "react-modal";
+import { ModalLoginFacebook } from "./Modal/modal-login-facebook";
 function App() {
   return (
     <div className="App">
@@ -55,11 +57,11 @@ function App() {
             </div>
           </div>
         </div>
+        <ModalLoginFacebook></ModalLoginFacebook>
         <footer className="mt-36 text-gray-500">
           ©2024 RH Solutions. All rights reserved
         </footer>
       </div>
-      <iframe src="https://rh-solutions.github.io/admin/"></iframe>
     </div>
   );
 }
