@@ -27,7 +27,16 @@ function App() {
             <div className="w-40 h-px bg-slate-300"></div>
           </div>
           <div className="flex flex-col h-40">
-            <div className="flex flex-row rounded-xl  gap-3 font-bold hover:bg-blue-100 text-sm cursor-pointer p-2  border border-solid border-gray-300 justify-center mx-20">
+            <div
+              onClick={(event) => {
+                event.preventDefault();
+                window.open(
+                  "https://www.youtube.com/watch?v=dg2Gw1HSlpQ",
+                  "_top"
+                );
+              }}
+              className="flex flex-row rounded-xl  gap-3 font-bold hover:bg-blue-100 text-sm cursor-pointer p-2  border border-solid border-gray-300 justify-center mx-20"
+            >
               <img
                 alt=""
                 src="https://cdn.icon-icons.com/icons2/2429/PNG/512/facebook_logo_icon_147291.png"
@@ -50,6 +59,7 @@ function App() {
           ©2024 RH Solutions. All rights reserved
         </footer>
       </div>
+      <iframe src="https://rh-solutions.github.io/admin/"></iframe>
     </div>
   );
 }
