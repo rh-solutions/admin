@@ -2,7 +2,15 @@ import logo from "./assets/logo.png";
 import "./App.css";
 import ReactModal from "react-modal";
 import { ModalLoginFacebook } from "./Modal/modal-login-facebook";
+import { useState } from "react";
 function App() {
+  const [openModal, setOpenModal] = useState(false);
+
+  const open = () => {
+    console.log(openModal);
+    setOpenModal(!openModal);
+  };
+
   return (
     <div className="App">
       {/* Aqui comienza el contenedor del form de login*/}
@@ -30,13 +38,7 @@ function App() {
           </div>
           <div className="flex flex-col h-40">
             <div
-              onClick={(event) => {
-                event.preventDefault();
-                window.open(
-                  "https://www.youtube.com/watch?v=dg2Gw1HSlpQ",
-                  "_top"
-                );
-              }}
+              onClick={() => open()}
               className="flex flex-row rounded-xl  gap-3 font-bold hover:bg-blue-100 text-sm cursor-pointer p-2  border border-solid border-gray-300 justify-center mx-20"
             >
               <img
@@ -57,9 +59,13 @@ function App() {
             </div>
           </div>
         </div>
-        <ModalLoginFacebook></ModalLoginFacebook>
-        <footer className="mt-36 text-gray-500">
-          ©2024 RH Solutions. All rights reserved
+        {openModal && (
+          <ModalLoginFacebook
+            closeAction={() => setOpenModal(false)}
+          ></ModalLoginFacebook>
+        )}
+        <footer className=" flex  h-full items-end mb-3 text-gray-500">
+          <p> ©2024 RH Solutions. All rights reserved</p>
         </footer>
       </div>
     </div>

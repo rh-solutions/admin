@@ -1,5 +1,5 @@
 {
-  "homepage": "https://rh-solutions.github.io/admin",
+  "homepage": "https://rh-solutions.github.io/admin/",
   "name": "rh",
   "version": "0.1.0",
   "private": true,
@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^13.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-draggable": "^4.4.6",
     "react-icons": "^5.1.0",
     "react-modal": "^3.16.1",
     "react-scripts": "5.0.1",
