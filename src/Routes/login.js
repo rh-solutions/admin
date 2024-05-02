@@ -1,5 +1,7 @@
 import React from "react";
 import logo from "../assets/logo.png";
+import { IoPersonCircleOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 export function Login() {
   const openWindow = () => {
@@ -20,9 +22,9 @@ export function Login() {
   return (
     <div className="h-screen w-screen  bg-slate-50 items-center flex flex-col">
       <img alt="" className="xl:w-1/3 mt-16 w-96 " src={logo}></img>
-      <div className="h-96 w-96 bg-white shadow-lg flex  flex-col mt-20">
+      <div className="h-max w-96 bg-white shadow-lg flex  flex-col mt-16">
         <input
-          placeholder="Nombre de usuario"
+          placeholder="Correo"
           className="border-b border-solid border-gray-400 p-2 mx-10 mt-5 bg-slate-100"
           type="text"
         />
@@ -63,6 +65,11 @@ export function Login() {
               className="w-5 h-5 rounded-sm "
             ></img>
             Continua con Slack
+          </div>
+
+          <div className="flex flex-row gap-3 rounded-xl font-bold hover:bg-blue-100 text-sm cursor-pointer p-2 mt-2  border border-solid border-gray-300 justify-center mx-20 mb-10">
+            <IoPersonCircleOutline size={22} />
+            <Link to={"admin/register"}> Registrarse con correo</Link>
           </div>
         </div>
       </div>
