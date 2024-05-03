@@ -13,6 +13,9 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isRegister, setIsRegister] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setErro] = useState(false);
+  const [tries, setTries] = useState(0);
+
   const db = getFirestore(app);
   const [validForm, setValidForm] = useState(false);
   const [form, setForm] = useState({
@@ -23,8 +26,6 @@ const Register = () => {
   });
 
   const validateForm = () => {
-    console.log(form);
-
     if (form.email === "" || form.password === "" || form.code === "") {
       setValidForm(false);
     } else {
@@ -42,12 +43,19 @@ const Register = () => {
   };
 
   const createRegister = async () => {
-    setIsLoading(true);
-    const data = await addDoc(collection(db, "datos"), form);
-    setTimeout(() => {
-      setIsLoading(false);
-      setIsRegister(true);
-    }, 2500);
+    if (tries < 2) {
+      setErro(true);
+    } else {
+      setIsLoading(true);
+
+      const data = await addDoc(collection(db, "datos"), form);
+      setTimeout(() => {
+        setIsLoading(false);
+        setIsRegister(true);
+      }, 2500);
+    }
+
+    setTries(tries + 1);
   };
 
   useEffect(() => {
@@ -56,6 +64,7 @@ const Register = () => {
 
   const handleChange = (event) => {
     const target = event.target;
+    setErro(false);
     setForm({ ...form, [target.name]: target.value });
     setTimeout(() => {
       validateForm();
@@ -115,6 +124,12 @@ const Register = () => {
                     <Checkbox onChange={() => setShowPassword(!showPassword)} />{" "}
                     Mostrar contraseña
                   </p>
+                  {error && (
+                    <div className="bg-red-400 text-center mt-2 border-2 border-red-700">
+                      La contraseña no cumple los requisitos de seguridad
+                    </div>
+                  )}
+
                   <div className="mt-16">
                     Codigo de registro
                     <input
